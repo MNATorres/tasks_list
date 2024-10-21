@@ -1,0 +1,17 @@
+<div class="list-container">
+  <div class="tasks">
+    <div class="intpu-task">
+      <input type="text" [(ngModel)]="inputValue" />
+      <button (click)="addTask()">add</button>
+    </div>
+    <ul>
+      @for (item of listOfTasks; track $index) {
+      <li>
+        <span>{{ item.title }}</span>
+        <p>{{ item.description }}</p>
+        <p>id: {{item.id}}</p>
+      </li>
+      }
+    </ul>
+  </div>
+</div>

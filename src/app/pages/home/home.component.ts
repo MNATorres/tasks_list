@@ -4,13 +4,20 @@ import { ITask } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, HttpClientModule, CommonModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatTableModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -18,11 +25,17 @@ export class HomeComponent {
   public titleValue: string = '';
   public descriptionValue: string = '';
   public listOfTasks: ITask[] = [];
+  public displayedColumns: string[] = [
+    'position',
+    'title',
+    'description',
+    'createAt',
+  ];
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
-    this.getAllTask()
+    this.getAllTask();
   }
 
   public addTask() {
@@ -39,7 +52,7 @@ export class HomeComponent {
     this.taskService.createTask(body).subscribe({
       next: (response) => {
         console.log('Tarea creada:', response); // Maneja la respuesta exitosa
-        this.getAllTask()
+        this.getAllTask();
       },
       error: (error) => {
         console.error('Error al crear la tarea:', error); // Maneja el error
@@ -53,7 +66,13 @@ export class HomeComponent {
   public getAllTask() {
     this.taskService.getTasks().subscribe({
       next: (data) => {
-        this.listOfTasks = data;
+        this.listOfTasks = data.map((task: ITask, i: number) => {
+          return {
+            ...task,
+            position: i + 1,
+          };
+        });
+        console.log('lista', this.listOfTasks);
       },
       error: (error) => {
         console.log('Error al traer la lista de tasks', error);

@@ -1,19 +1,55 @@
-<div class="list-container">
+<div class="tasks-container">
   <div class="tasks">
-    <div class="input-task">
-      <input type="text" [(ngModel)]="titleValue" placeholder="Título" />
-      <input type="text" [(ngModel)]="descriptionValue" placeholder="Descripción" />
-      <button (click)="addTask()">Agregar Tarea</button>
-    </div>
-    <ul>
-      @for (task of listOfTasks; track $index) {
-      <li>
-        <span>{{ task.title }}</span>
-        <p>{{ task.description }}</p>
-        <p>{{ task.createAt }}</p>
-        <p>id: {{ task.id }}</p>
-      </li>
-      }
-    </ul>
+    <form class="tasks-form">
+      <mat-form-field class="tasks-full-width">
+        <mat-label>Título de tarea</mat-label>
+        <input
+          matInput
+          [(ngModel)]="titleValue"
+          placeholder="Título"
+          name="Título"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="tasks-full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="descriptionValue"
+          name="Descripción"
+          placeholder="Descripción"
+        ></textarea>
+      </mat-form-field>
+    </form>
+    <button (click)="addTask()">Agregar Tarea</button>
   </div>
+
+  <table mat-table [dataSource]="listOfTasks" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="createAt">
+      <th mat-header-cell *matHeaderCellDef>Creation Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.createAt }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>

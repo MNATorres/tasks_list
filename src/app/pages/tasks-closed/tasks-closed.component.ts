@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './tasks-closed.component.html',
-  styleUrl: './tasks-closed.component.scss'
+  styleUrl: './tasks-closed.component.scss',
 })
-export class TasksClosedComponent {
-
-}
+export class TasksClosedComponent {}

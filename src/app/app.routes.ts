@@ -5,9 +5,9 @@ import { TasksClosedComponent } from './pages/tasks-closed/tasks-closed.componen
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'tasks-closed', component: TasksClosedComponent },
-    { path: 'statistics', component: StatisticsComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: '**', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'tasks-closed', component: TasksClosedComponent },
+  { path: 'statistics', component: StatisticsComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', component: HomeComponent },
 ];

@@ -1,15 +1,17 @@
 <div class="list-container">
   <div class="tasks">
-    <div class="intpu-task">
-      <input type="text" [(ngModel)]="inputValue" />
-      <button (click)="addTask()">add</button>
+    <div class="input-task">
+      <input type="text" [(ngModel)]="titleValue" placeholder="Título" />
+      <input type="text" [(ngModel)]="descriptionValue" placeholder="Descripción" />
+      <button (click)="addTask()">Agregar Tarea</button>
     </div>
     <ul>
-      @for (item of listOfTasks; track $index) {
+      @for (task of listOfTasks; track $index) {
       <li>
-        <span>{{ item.title }}</span>
-        <p>{{ item.description }}</p>
-        <p>id: {{item.id}}</p>
+        <span>{{ task.title }}</span>
+        <p>{{ task.description }}</p>
+        <p>{{ task.createAt }}</p>
+        <p>id: {{ task.id }}</p>
       </li>
       }
     </ul>

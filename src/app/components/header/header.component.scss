@@ -1,41 +1,41 @@
 /* Estilos para el contenedor del encabezado */
 .header-container {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  background-color: #4CAF50; 
-  color: white; 
-  padding: 15px 30px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 30px;
 }
 
 /* Estilos para el logo */
 .header-container span {
-  font-size: 20px; 
-  font-weight: bold; 
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* Estilos para la lista de enlaces */
 .list-links-header {
-  list-style: none; 
-  padding: 0; 
-  margin: 0; 
-  display: flex; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 /* Estilos para los elementos de la lista */
 .list-links-header li {
-  margin-left: 20px; 
+  margin-left: 20px;
 }
 
 /* Estilos para los enlaces */
 .list-links-header a {
-  color: white; 
-  text-decoration: none; 
-  font-size: 18px; 
-  transition: color 0.3s; 
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
 }
 
 /* Efecto hover para los enlaces */
 .list-links-header a:hover {
-  color: #FFD700; 
+  color: #ffd700;
 }

@@ -15,8 +15,9 @@
    ```bash
    npm install
    ```
+
 4. Inicia el proyecto
 
-    ```bash
-    ng serve
-    ```
+   ```bash
+   ng serve
+   ```

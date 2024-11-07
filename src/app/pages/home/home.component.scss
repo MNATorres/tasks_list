@@ -40,3 +40,12 @@ table {
     width: 60%;
   }
 }
+
+.delete-task {
+  cursor: pointer;
+}
+
+.delete-task:hover {
+  cursor: pointer;
+  color: tomato;
+}

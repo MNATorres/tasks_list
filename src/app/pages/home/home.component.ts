@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatTableModule,
     MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -33,6 +35,7 @@ export class HomeComponent {
     'title',
     'description',
     'createAt',
+    'trash',
   ];
 
   constructor(private taskService: TaskService) {}
@@ -79,6 +82,18 @@ export class HomeComponent {
       },
       error: (error) => {
         console.log('Error al traer la lista de tasks', error);
+      },
+    });
+  }
+
+  public deleteTask(id: string) {
+    this.taskService.deleteTask(id).subscribe({
+      next: (data) => {
+        console.log(`La tarea ${id} fue eliminada con éxito`, data);
+        this.getAllTask();
+      },
+      error: (error) => {
+        console.log('Error al eliminar tarea', error);
       },
     });
   }

@@ -15,4 +15,8 @@ export class TaskService {
   getTasks() {
     return this.http.get('task/alltasks');
   }
+
+  deleteTask(id: string) {
+    return this.http.delete(`task/${id}`);
+  }
 }

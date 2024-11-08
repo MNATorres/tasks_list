@@ -53,6 +53,7 @@ export class HomeComponent {
       title: this.titleValue,
       description: this.descriptionValue,
       createAt: moment().format('DD/MM/YYYY'),
+      complete: false
     };
 
     this.taskService.createTask(body).subscribe({
